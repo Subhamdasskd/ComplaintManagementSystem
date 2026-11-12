@@ -147,6 +147,7 @@ node -e "console.log(require('crypto').randomBytes(32).toString('base64url'))"
 | `npm run build` | `prisma generate` + production build |
 | `npm start` | Serve the production build |
 | `npm test` | Vitest unit suite |
+| `npm run smoke [url]` | End-to-end HTTP smoke test against a running deployment |
 | `npm run lint` | ESLint (Next.js flat config) |
 | `npm run typecheck` | `tsc --noEmit` |
 | `npm run db:push` | Apply the Prisma schema to the database |
@@ -225,12 +226,20 @@ database containing real complaints.
 ## Tests
 
 ```bash
-npm test
+npm test                                  # unit suite
+npm run smoke                             # end-to-end against localhost:3100
+npm run smoke -- https://your-deployment  # end-to-end against a deployment
 ```
 
 37 unit tests cover the pure logic that is easy to get wrong: the escalation ladder and its
 windows, SLA due dates and breach detection, duration formatting, and every RBAC decision
 (visibility, transitions, reassignment, escalation, feedback).
+
+`scripts/smoke.mjs` drives the real HTTP surface with no dependencies: it signs in through the
+demo endpoint, raises a complaint with an attachment, posts a public reply and an internal note,
+checks that the requester cannot reject or reassign, escalates from L1 to L2, closes, rates,
+reopens, downloads the attachment, and confirms validation and RBAC refusals. It exits non-zero
+on the first failure, so it can gate a deploy.
 
 ## Documentation
 
