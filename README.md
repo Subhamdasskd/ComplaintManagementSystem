@@ -16,7 +16,7 @@ IILM University) and deployed as a fully working demo you can sign into in one c
 
 ## Try it without an account
 
-**Live:** <https://complaint-management-system.vercel.app>
+**Live:** <https://complaint-management-system-alpha-ten.vercel.app>
 
 Open the landing page and press any role card — no password, no signup. Every role sees a
 different slice of the same seeded dataset (30 complaints, 9 people, a month of history).

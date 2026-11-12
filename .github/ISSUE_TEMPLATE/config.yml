@@ -4,5 +4,5 @@ contact_links:
     url: https://github.com/Subhamdasskd/ComplaintManagementSystem/security/policy
     about: Please report vulnerabilities privately, not in a public issue.
   - name: Live demo
-    url: https://complaint-management-system.vercel.app
+    url: https://complaint-management-system-alpha-ten.vercel.app
     about: Try the deployed app before opening an issue.
