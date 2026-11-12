@@ -79,7 +79,7 @@ export default function LandingPage() {
           <nav className="ml-auto hidden items-center gap-6 text-sm text-slate-600 md:flex">
             <a href="#features" className="hover:text-slate-900">Features</a>
             <a href="#escalation" className="hover:text-slate-900">Escalation</a>
-            <a href="#demo" className="hover:text-slate-900">Live demo</a>
+            <Link href="/demo" className="hover:text-slate-900">Live demo</Link>
           </nav>
           <Link href="/login" className="btn btn-outline ml-auto md:ml-4">
             Sign in
@@ -108,10 +108,10 @@ export default function LandingPage() {
           </p>
 
           <div className="mt-7 flex flex-wrap items-center gap-3">
-            <a href="#demo" className="btn btn-primary">
-              Try it in one click
+            <Link href="/demo" className="btn btn-primary">
+              Open the demo
               <ArrowRight className="size-4" />
-            </a>
+            </Link>
             <a
               href="https://github.com/Subhamdasskd/ComplaintManagementSystem"
               target="_blank"
@@ -219,8 +219,15 @@ export default function LandingPage() {
             <span className="chip bg-emerald-50 text-emerald-700 ring-1 ring-emerald-200">
               <Lock className="size-3.5" /> No password needed
             </span>
+            <div className="flex flex-wrap items-center gap-3">
+              <Link href="/demo" className="btn btn-primary">
+                Open the read-only demo <ArrowRight className="size-4" />
+              </Link>
+              <span className="text-xs text-slate-500">No database, no sign-in — every screenshot below is from that data.</span>
+            </div>
           </div>
           <div className="mt-6">
+            <p className="mono-label mb-3">Or sign in to the live app</p>
             <DemoLogin />
           </div>
         </div>

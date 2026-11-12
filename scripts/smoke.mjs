@@ -61,6 +61,15 @@ async function main() {
   check("GET / renders the landing page", home.status === 200 && home.text.includes("<title>"), String(home.status));
   check("GET /login renders", (await request("/login")).status === 200);
 
+  // The read-only demo needs no database, so it must work on any deployment.
+  const demo = await request("/demo");
+  check("GET /demo renders the read-only demo", demo.status === 200 && demo.text.includes("Read-only demo"), String(demo.status));
+  check("GET /demo shows complaint references", /CMS-\d{4}-\d{4}/.test(demo.text));
+  check("GET /demo/complaints renders", (await request("/demo/complaints")).status === 200);
+  check("GET /demo/analytics renders", (await request("/demo/analytics")).status === 200);
+  const demoDetail = await request("/demo/complaints/cms-2026-0001");
+  check("GET /demo/complaints/[id] renders a timeline", demoDetail.status === 200 && demoDetail.text.includes("Everything that happened"), String(demoDetail.status));
+
   const guarded = await request("/dashboard");
   check("GET /dashboard redirects when signed out", guarded.status === 307, String(guarded.status));
 
@@ -76,7 +85,7 @@ async function main() {
   const l1 = await login("L1");
   const l2 = await login("L2");
 
-  for (const [label, path] of [
+  for (const [, path] of [
     ["dashboard", "/dashboard"],
     ["complaints", "/complaints"],
     ["analytics", "/analytics"],

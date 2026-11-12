@@ -18,8 +18,20 @@ IILM University) and deployed as a fully working demo you can sign into in one c
 
 **Live:** <https://complaint-management-system-alpha-ten.vercel.app>
 
-Open the landing page and press any role card — no password, no signup. Every role sees a
-different slice of the same seeded dataset (30 complaints, 9 people, a month of history).
+Two ways in:
+
+| Path | What it is | Needs a database? |
+|---|---|---|
+| [`/demo`](https://complaint-management-system-alpha-ten.vercel.app/demo) | A read-only snapshot rendered from deterministic demo data — overview, complaint list, a full timeline and analytics | No |
+| `/login` | The real application: real sessions, real writes, real cron | Yes |
+
+The demo exists so the deployment is explorable the moment it ships, and so screenshots and
+code review can be done without seeding anything: `src/lib/demo/dataset.ts` generates the same
+30 complaints deterministically, and the demo routes render them through the same components
+as the live pages. Mutations are disabled there by design.
+
+For the live app, the landing page has one-click role cards (no password) once the database is
+seeded:
 
 | Role | Account | What they see |
 |---|---|---|
@@ -176,6 +188,10 @@ src/
 ├── app/
 │   ├── page.tsx                      # landing page with one-click demo login
 │   ├── login/ register/              # auth screens
+│   ├── (demo)/demo/                  # read-only demo, no database required
+│   │   ├── page.tsx                  # demo overview
+│   │   ├── complaints/               # demo list + timeline
+│   │   └── analytics/
 │   ├── (app)/                        # authenticated shell
 │   │   ├── dashboard/                # stats, charts, what needs attention
 │   │   ├── complaints/               # list, new, [id] detail + timeline
@@ -197,7 +213,8 @@ src/
     ├── sla.ts                        # due dates, breaches, durations
     ├── assign.ts                     # least-loaded assignment
     ├── settings.ts                   # policy read/write
-    └── session.ts, auth.ts           # JWT session + bcrypt
+    ├── session.ts, auth.ts           # JWT session + bcrypt
+    └── demo/dataset.ts               # deterministic demo data (no database)
 prisma/
 ├── schema.prisma                     # User, Complaint, Remark, Attachment, StatusEvent…
 └── seed.ts                           # deterministic demo dataset

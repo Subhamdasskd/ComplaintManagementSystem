@@ -4,6 +4,22 @@ All notable changes to this project are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.0] — 2026-11-12
+
+### Added
+
+- **Read-only demo at `/demo`** — overview, complaint list, a full complaint timeline and analytics,
+  rendered from a deterministic dataset (`src/lib/demo/dataset.ts`). It needs no database and no
+  sign-in, so the deployment is explorable the moment it ships.
+- **`npm run smoke`** — a dependency-free end-to-end HTTP suite (33 checks) covering the demo
+  routes, demo login, raise/comment/escalate/close/rate/reopen, RBAC refusals, attachment
+  download and validation. Exits non-zero on failure, so it can gate a deploy.
+
+### Changed
+
+- API routes now return a clear `503` with remediation steps when the database is unreachable,
+  instead of an opaque `500`.
+
 ## [1.0.0] — 2026-11-12
 
 First complete release: a working complaint desk with a seeded public demo.
