@@ -12,7 +12,7 @@ import { CategoryChart, StatusDonut, VolumeChart } from "@/components/charts";
 import { Avatar, Card, EmptyState, PriorityBadge, ProgressBar, StatusBadge } from "@/components/ui";
 import { prisma } from "@/lib/db";
 import { requireUser } from "@/lib/auth";
-import { dueLabel, formatDateTime, relativeTime } from "@/lib/format";
+import { dueLabel, formatDateTime, greeting, relativeTime } from "@/lib/format";
 import { CATEGORY_LABELS, STATUS_META, type Category as CategoryKey, type Status } from "@/lib/constants";
 import { visibleComplaintFilter, type Viewer } from "@/lib/rbac";
 import { roleToLevel } from "@/lib/rbac";
@@ -110,7 +110,6 @@ export default async function DashboardPage() {
     value: row._count._all,
   }));
 
-  const greeting = now.getHours() < 12 ? "Good morning" : now.getHours() < 17 ? "Good afternoon" : "Good evening";
   const scopeLabel = user.role === "USER" ? "your complaints" : user.role === "ADMIN" ? "the whole desk" : "your queue";
 
   return (
@@ -120,7 +119,7 @@ export default async function DashboardPage() {
         <div>
           <p className="mono-label">{formatDateTime(now)} · Asia/Kolkata</p>
           <h1 className="mt-1 text-2xl font-semibold tracking-tight text-slate-900">
-            {greeting}, {user.name.split(" ")[0]}
+            {greeting(now)}, {user.name.split(" ")[0]}
           </h1>
           <p className="mt-1 text-sm text-slate-500">A live snapshot of {scopeLabel}.</p>
         </div>

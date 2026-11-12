@@ -3,7 +3,7 @@ import { ArrowRight, CircleDot, Clock, Flame, Plus, Ticket, TrendingUp } from "l
 import { CategoryChart, StatusDonut, VolumeChart } from "@/components/charts";
 import { Avatar, Card, PriorityBadge, ProgressBar, StatusBadge } from "@/components/ui";
 import { buildDemoDataset, computeDemoMetrics } from "@/lib/demo/dataset";
-import { dueLabel, formatDateTime, relativeTime } from "@/lib/format";
+import { dueLabel, formatDateTime, greeting, relativeTime } from "@/lib/format";
 import { formatDuration } from "@/lib/sla";
 
 export const dynamic = "force-dynamic";
@@ -39,7 +39,7 @@ export default function DemoDashboardPage() {
         <div>
           <p className="mono-label">{formatDateTime(now)} · Asia/Kolkata</p>
           <h1 className="mt-1 text-2xl font-semibold tracking-tight text-slate-900">
-            {now.getHours() < 12 ? "Good morning" : now.getHours() < 17 ? "Good afternoon" : "Good evening"}, Aarav
+            {greeting(now)}, Aarav
           </h1>
           <p className="mt-1 text-sm text-slate-500">A live snapshot of the whole desk — rendered from the demo dataset.</p>
         </div>

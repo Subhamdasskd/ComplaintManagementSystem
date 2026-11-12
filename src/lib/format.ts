@@ -39,6 +39,23 @@ export function formatTime(value: Date | string | null | undefined): string {
   return timeFormatter.format(new Date(value));
 }
 
+/** Hour of day (0-23) in the desk's timezone, so greetings are not computed in UTC. */
+export function hourOfDay(value: Date = new Date(), timeZone: string = IST): number {
+  const formatted = new Intl.DateTimeFormat("en-GB", {
+    timeZone,
+    hour: "2-digit",
+    hourCycle: "h23",
+  }).format(value);
+  return Number(formatted);
+}
+
+export function greeting(value: Date = new Date()): string {
+  const hour = hourOfDay(value);
+  if (hour < 12) return "Good morning";
+  if (hour < 17) return "Good afternoon";
+  return "Good evening";
+}
+
 /** Short relative label: "just now", "12m ago", "3h ago", "2d ago". */
 export function relativeTime(value: Date | string | null | undefined, now: Date = new Date()): string {
   if (!value) return "—";

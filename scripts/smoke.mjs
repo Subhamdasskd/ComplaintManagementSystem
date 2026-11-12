@@ -37,15 +37,26 @@ async function request(path, { method = "GET", body, cookie, form } = {}) {
     payload = JSON.stringify(body);
   }
   if (cookie) headers.Cookie = cookie;
-  const response = await fetch(BASE + path, { method, headers, body: payload, redirect: "manual" });
-  const text = await response.text();
-  let json = null;
-  try {
-    json = text ? JSON.parse(text) : null;
-  } catch {
-    json = null;
+
+  // Deployments can drop a connection mid-flight; retry transient network errors once.
+  let lastError;
+  for (let attempt = 0; attempt < 2; attempt += 1) {
+    try {
+      const response = await fetch(BASE + path, { method, headers, body: payload, redirect: "manual" });
+      const text = await response.text();
+      let json = null;
+      try {
+        json = text ? JSON.parse(text) : null;
+      } catch {
+        json = null;
+      }
+      return { status: response.status, headers: response.headers, text, json };
+    } catch (error) {
+      lastError = error;
+      await new Promise((resolve) => setTimeout(resolve, 700));
+    }
   }
-  return { status: response.status, headers: response.headers, text, json };
+  throw new Error(`${method} ${path} failed: ${lastError?.message ?? "unknown error"}`);
 }
 
 async function login(role) {
