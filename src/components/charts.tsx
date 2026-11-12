@@ -60,7 +60,7 @@ export function VolumeChart({ data }: { data: VolumePoint[] }) {
           </defs>
           <CartesianGrid strokeDasharray="4 6" stroke="#e2e8f0" vertical={false} />
           <XAxis dataKey="day" tickLine={false} axisLine={false} tick={AXIS} interval={Math.max(0, Math.floor(data.length / 7))} />
-          <YAxis tickLine={false} axisLine={false} tick={AXIS} width={40} allowDecimals={false} />
+          <YAxis tickLine={false} axisLine={false} tick={AXIS} width={40} allowDecimals={false} domain={[0, "dataMax + 2"]} />
           <Tooltip content={<ChartTooltip />} />
           <Area type="monotone" dataKey="raised" name="Raised" stroke="#6366f1" strokeWidth={2.2} fill="url(#raisedFill)" />
           <Area type="monotone" dataKey="closed" name="Closed" stroke="#06b6d4" strokeWidth={2.2} fill="url(#closedFill)" />

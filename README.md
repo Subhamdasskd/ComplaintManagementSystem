@@ -53,6 +53,10 @@ All demo accounts share the password `Demo@12345` if you prefer the form.
 |---|---|
 | ![Analytics](docs/screenshots/analytics.png) | ![Landing page](docs/screenshots/landing.png) |
 
+The read-only demo shipped at `/demo`, captured from the live deployment:
+
+![Read-only demo](docs/screenshots/demo.png)
+
 ## Features
 
 - **Five roles, one system** — requester, L1, L2, L3 and administrator each get their own
