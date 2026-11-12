@@ -11,8 +11,8 @@ A role-based complaint management system for real support hierarchies: requester
 complaints, an algorithm assigns them to the least-loaded L1 agent, SLA clocks run per
 priority, and an unattended watchdog escalates unresolved work up L1 → L2 → L3.
 
-Built as the implementation of an internship project specification (Tata Technologies /
-IILM University) and deployed as a fully working demo you can sign into in one click.
+Built as the implementation of an internship project specification and deployed as a fully
+working demo you can sign into in one click.
 
 ## Try it without an account
 
