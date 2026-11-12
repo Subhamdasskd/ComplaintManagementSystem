@@ -19,6 +19,12 @@ All notable changes to this project are documented here. The format follows
 
 - API routes now return a clear `503` with remediation steps when the database is unreachable,
   instead of an opaque `500`.
+- New **shield-and-check logo** (`src/components/brand.tsx`), a matching `app/icon.svg` favicon
+  and the same mark in `docs/banner.svg`. The landing footer no longer carries the university
+  and internship line.
+- The dashboard greeting is computed in `Asia/Kolkata` rather than the server clock, so a
+  deployment running on UTC no longer says "Good evening" at midnight IST.
+- The production deployment runs against Neon Postgres with the seeded demo dataset.
 
 ## [1.0.0] — 2026-11-12
 
