@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { Prisma } from "@prisma/client";
 import { ZodError, type ZodType } from "zod";
 import { getViewer } from "./auth";
 import type { Viewer } from "./rbac";
@@ -50,6 +51,16 @@ export function errorResponse(error: unknown) {
   }
   if (error instanceof ZodError) {
     return fail(422, error.issues[0]?.message ?? "Invalid input", error.flatten());
+  }
+  // A deployment without a reachable database should say so, not leak a stack trace.
+  if (error instanceof Prisma.PrismaClientInitializationError) {
+    return fail(
+      503,
+      "The database is not reachable yet. Set DATABASE_URL, run `npx prisma db push` and `npm run db:seed`, then redeploy.",
+    );
+  }
+  if (error instanceof Prisma.PrismaClientKnownRequestError && ["P1000", "P1001", "P1017"].includes(error.code)) {
+    return fail(503, "The database is not reachable right now. Please try again shortly.");
   }
   console.error("[api] unhandled error", error);
   const message = error instanceof Error ? error.message : "Unexpected server error";
