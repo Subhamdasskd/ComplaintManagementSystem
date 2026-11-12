@@ -19,6 +19,7 @@ import {
   X,
 } from "lucide-react";
 import { Avatar, RoleBadge } from "@/components/ui";
+import { Logo } from "@/components/brand";
 import { cn, relativeTime } from "@/lib/format";
 import { apiFetch } from "@/lib/client";
 import type { Role } from "@/lib/constants";
@@ -81,7 +82,7 @@ export function AppShell({ user, children }: { user: ShellUser; children: React.
   const nav = (onNavigate?: () => void) => (
     <nav className="flex h-full flex-col gap-6">
       <div className="flex items-center gap-3 px-2">
-        <span className="brand-mark grid size-10 place-items-center rounded-2xl text-sm font-bold text-white">CMS</span>
+        <Logo size="lg" />
         <div className="leading-tight">
           <p className="text-sm font-semibold tracking-tight text-slate-900">Complaint Desk</p>
           <p className="text-[11px] text-slate-500">TTL grievance system</p>

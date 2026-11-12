@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ArrowRight, Eye, Github } from "lucide-react";
+import { Logo } from "@/components/brand";
 
 export const metadata = { title: "Demo" };
 
@@ -9,7 +10,7 @@ export default function DemoLayout({ children }: { children: React.ReactNode }) 
       <header className="sticky top-0 z-30 border-b border-white/60 bg-white/60 backdrop-blur-xl">
         <div className="mx-auto flex h-16 w-full max-w-6xl items-center gap-3 px-4 sm:px-6">
           <Link href="/" className="flex items-center gap-2.5">
-            <span className="brand-mark grid size-9 place-items-center rounded-xl text-[11px] font-bold text-white">CMS</span>
+            <Logo size="md" />
             <span className="text-sm font-semibold tracking-tight text-slate-900">Complaint Desk</span>
           </Link>
 

@@ -40,7 +40,23 @@
 
   <!-- brand mark -->
   <rect x="68" y="58" width="56" height="56" rx="17" fill="url(#brand)" />
-  <text x="96" y="93" text-anchor="middle" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="16" font-weight="700" fill="#ffffff">CMS</text>
+  <g transform="translate(82 72) scale(1.17)" fill="none">
+    <path
+      d="M12 2.9 19.1 5.6v5.5c0 4.4-2.9 7.9-7.1 9.5-4.2-1.6-7.1-5.1-7.1-9.5V5.6L12 2.9Z"
+      fill="#ffffff"
+      fill-opacity="0.18"
+      stroke="#ffffff"
+      stroke-width="1.5"
+      stroke-linejoin="round"
+    />
+    <path
+      d="m8.5 11.8 2.4 2.4 4.7-4.8"
+      stroke="#ffffff"
+      stroke-width="1.9"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+  </g>
   <text x="138" y="80" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="15" font-weight="600" fill="#0b1220">Complaint Desk</text>
   <text x="138" y="100" font-family="'JetBrains Mono', ui-monospace, monospace" font-size="11" letter-spacing="2" fill="#64748b">TTL GRIEVANCE SYSTEM</text>
 

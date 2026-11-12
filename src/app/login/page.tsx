@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Suspense } from "react";
 import { ArrowLeft, ArrowRight, KeyRound, ShieldCheck, Sparkles } from "lucide-react";
 import { LoginForm } from "@/components/auth/login-form";
+import { Logo } from "@/components/brand";
 import { DemoLogin } from "@/components/auth/demo-login";
 
 export const metadata = { title: "Sign in" };
@@ -16,7 +17,7 @@ export default function LoginPage() {
         {/* brand panel */}
         <div className="relative hidden flex-col justify-between border-r border-white/70 bg-gradient-to-br from-indigo-50/80 via-white/40 to-cyan-50/60 p-8 md:flex">
           <Link href="/" className="flex items-center gap-2.5">
-            <span className="brand-mark grid size-9 place-items-center rounded-xl text-[11px] font-bold text-white">CMS</span>
+            <Logo size="md" />
             <span className="text-sm font-semibold tracking-tight text-slate-900">Complaint Desk</span>
           </Link>
 

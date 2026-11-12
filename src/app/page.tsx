@@ -19,6 +19,7 @@ import {
   Workflow,
 } from "lucide-react";
 import { DemoLogin } from "@/components/auth/demo-login";
+import { Logo } from "@/components/brand";
 import { PriorityBadge, StatusBadge } from "@/components/ui";
 
 const FEATURES = [
@@ -73,7 +74,7 @@ export default function LandingPage() {
       <header className="sticky top-0 z-30 border-b border-white/60 bg-white/55 backdrop-blur-xl">
         <div className="mx-auto flex h-16 w-full max-w-6xl items-center gap-3 px-4 sm:px-6">
           <Link href="/" className="flex items-center gap-2.5">
-            <span className="brand-mark grid size-9 place-items-center rounded-xl text-[11px] font-bold text-white">CMS</span>
+            <Logo size="md" />
             <span className="text-sm font-semibold tracking-tight text-slate-900">Complaint Desk</span>
           </Link>
           <nav className="ml-auto hidden items-center gap-6 text-sm text-slate-600 md:flex">
@@ -335,10 +336,10 @@ export default function LandingPage() {
       <footer className="border-t border-white/70 bg-white/50 backdrop-blur">
         <div className="mx-auto flex w-full max-w-6xl flex-col gap-6 px-4 py-10 sm:flex-row sm:items-center sm:justify-between sm:px-6">
           <div className="flex items-center gap-3">
-            <span className="brand-mark grid size-9 place-items-center rounded-xl text-[11px] font-bold text-white">CMS</span>
+            <Logo size="md" />
             <div>
               <p className="text-sm font-semibold text-slate-900">Complaint Management System</p>
-              <p className="text-[11px] text-slate-500">Built by Subham Das · IILM University · Tata Technologies internship</p>
+              <p className="text-[11px] text-slate-500">Built by Subham Das</p>
             </div>
           </div>
           <div className="flex flex-wrap items-center gap-4 text-xs text-slate-500">

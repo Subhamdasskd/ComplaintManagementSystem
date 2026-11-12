@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowLeft, CheckCircle2 } from "lucide-react";
 import { RegisterForm } from "@/components/auth/register-form";
+import { Logo } from "@/components/brand";
 
 export const metadata = { title: "Create account" };
 
@@ -13,7 +14,7 @@ export default function RegisterPage() {
       <div className="card relative grid w-full max-w-4xl overflow-hidden md:grid-cols-[0.9fr_1.1fr]">
         <div className="relative hidden flex-col justify-between border-r border-white/70 bg-gradient-to-br from-violet-50/70 via-white/40 to-indigo-50/60 p-8 md:flex">
           <Link href="/" className="flex items-center gap-2.5">
-            <span className="brand-mark grid size-9 place-items-center rounded-xl text-[11px] font-bold text-white">CMS</span>
+            <Logo size="md" />
             <span className="text-sm font-semibold tracking-tight text-slate-900">Complaint Desk</span>
           </Link>
 
