@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 320" width="1200" height="320" role="img" aria-label="Complaint Management System">
+  <title>Complaint Management System</title>
+
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#fbfcff" />
+      <stop offset="55%" stop-color="#f4f7ff" />
+      <stop offset="100%" stop-color="#eef2ff" />
+    </linearGradient>
+    <linearGradient id="brand" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#4f46e5" />
+      <stop offset="55%" stop-color="#6366f1" />
+      <stop offset="100%" stop-color="#06b6d4" />
+    </linearGradient>
+    <linearGradient id="title" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#312e81" />
+      <stop offset="45%" stop-color="#4f46e5" />
+      <stop offset="100%" stop-color="#0ea5e9" />
+    </linearGradient>
+    <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse">
+      <path d="M48 0H0V48" fill="none" stroke="#0f172a" stroke-opacity="0.04" />
+    </pattern>
+    <radialGradient id="glowIndigo" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#c7d2fe" stop-opacity="0.85" />
+      <stop offset="100%" stop-color="#c7d2fe" stop-opacity="0" />
+    </radialGradient>
+    <radialGradient id="glowCyan" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#a5f3fc" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#a5f3fc" stop-opacity="0" />
+    </radialGradient>
+    <filter id="cardShadow" x="-30%" y="-30%" width="160%" height="180%">
+      <feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#1e293b" flood-opacity="0.10" />
+    </filter>
+  </defs>
+
+  <rect width="1200" height="320" rx="26" fill="url(#bg)" />
+  <rect width="1200" height="320" rx="26" fill="url(#grid)" />
+  <circle cx="96" cy="24" r="210" fill="url(#glowIndigo)" />
+  <circle cx="430" cy="330" r="230" fill="url(#glowCyan)" />
+
+  <!-- brand mark -->
+  <rect x="68" y="58" width="56" height="56" rx="17" fill="url(#brand)" />
+  <text x="96" y="93" text-anchor="middle" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="16" font-weight="700" fill="#ffffff">CMS</text>
+  <text x="138" y="80" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="15" font-weight="600" fill="#0b1220">Complaint Desk</text>
+  <text x="138" y="100" font-family="'JetBrains Mono', ui-monospace, monospace" font-size="11" letter-spacing="2" fill="#64748b">TTL GRIEVANCE SYSTEM</text>
+
+  <!-- headline -->
+  <text x="68" y="186" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="46" font-weight="700" letter-spacing="-1.2" fill="url(#title)">Complaint Management System</text>
+  <text x="68" y="222" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="17" fill="#475569">Role-based grievance handling with SLA clocks, automatic L1 → L2 → L3 escalation and live analytics.</text>
+
+  <!-- stack pills -->
+  <g font-family="'JetBrains Mono', ui-monospace, monospace" font-size="11" letter-spacing="1.4">
+    <rect x="68" y="248" width="92" height="28" rx="14" fill="#ffffff" fill-opacity="0.85" stroke="#e2e8f0" />
+    <text x="114" y="267" text-anchor="middle" fill="#4338ca">NEXT.JS 16</text>
+    <rect x="168" y="248" width="86" height="28" rx="14" fill="#ffffff" fill-opacity="0.85" stroke="#e2e8f0" />
+    <text x="211" y="267" text-anchor="middle" fill="#4338ca">PRISMA</text>
+    <rect x="262" y="248" width="112" height="28" rx="14" fill="#ffffff" fill-opacity="0.85" stroke="#e2e8f0" />
+    <text x="318" y="267" text-anchor="middle" fill="#4338ca">POSTGRESQL</text>
+    <rect x="382" y="248" width="96" height="28" rx="14" fill="#ffffff" fill-opacity="0.85" stroke="#e2e8f0" />
+    <text x="430" y="267" text-anchor="middle" fill="#4338ca">JWT + RBAC</text>
+    <rect x="486" y="248" width="92" height="28" rx="14" fill="#ecfdf5" stroke="#a7f3d0" />
+    <text x="532" y="267" text-anchor="middle" fill="#047857">MIT ✓</text>
+  </g>
+
+  <!-- complaint card mock -->
+  <g filter="url(#cardShadow)">
+    <rect x="790" y="56" width="344" height="206" rx="22" fill="#ffffff" fill-opacity="0.92" stroke="#ffffff" />
+  </g>
+  <text x="814" y="88" font-family="'JetBrains Mono', ui-monospace, monospace" font-size="10" letter-spacing="1.6" fill="#94a3b8">CMS-2026-0007</text>
+  <rect x="1020" y="74" width="90" height="22" rx="11" fill="#eef2ff" stroke="#c7d2fe" />
+  <text x="1065" y="89" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" font-weight="600" fill="#4338ca">IN PROGRESS</text>
+  <text x="814" y="115" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="15" font-weight="600" fill="#0b1220">Mailbox quota exceeded</text>
+
+  <rect x="814" y="130" width="64" height="20" rx="10" fill="#fffbeb" stroke="#fde68a" />
+  <text x="846" y="144" text-anchor="middle" font-family="Inter, sans-serif" font-size="9" font-weight="600" fill="#b45309">HIGH</text>
+  <rect x="886" y="130" width="108" height="20" rx="10" fill="#f5f3ff" stroke="#ddd6fe" />
+  <text x="940" y="144" text-anchor="middle" font-family="Inter, sans-serif" font-size="9" font-weight="600" fill="#6d28d9">L2 · ENGINEERING</text>
+
+  <rect x="814" y="166" width="296" height="8" rx="4" fill="#e2e8f0" />
+  <rect x="814" y="166" width="86" height="8" rx="4" fill="url(#brand)" />
+  <text x="814" y="192" font-family="Inter, sans-serif" font-size="10" fill="#64748b">SLA window · 24h</text>
+  <text x="1110" y="192" text-anchor="end" font-family="Inter, sans-serif" font-size="10" font-weight="600" fill="#334155">18h left</text>
+
+  <circle cx="820" cy="214" r="5" fill="#6366f1" />
+  <text x="834" y="218" font-family="Inter, sans-serif" font-size="10" fill="#475569">Assigned to Sneha Iyer</text>
+  <circle cx="820" cy="236" r="5" fill="#8b5cf6" />
+  <text x="834" y="240" font-family="Inter, sans-serif" font-size="10" fill="#475569">Escalated L1 → L2 by the watchdog</text>
+</svg>

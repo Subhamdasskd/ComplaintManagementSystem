@@ -1,0 +1,135 @@
+// Complaint Management System — data model
+// Roles: USER, L1, L2, L3, ADMIN. Statuses: OPEN, WIP, HOLD, CLOSED, REJECTED.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  name         String
+  passwordHash String
+  role         String   @default("USER") // USER | L1 | L2 | L3 | ADMIN
+  department   String?
+  active       Boolean  @default(true)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  raisedComplaints   Complaint[]    @relation("RaisedBy")
+  assignedComplaints Complaint[]    @relation("AssignedTo")
+  remarks            Remark[]
+  statusEvents       StatusEvent[]
+  notifications      Notification[]
+  attachments        Attachment[]
+
+  @@index([role])
+}
+
+model Complaint {
+  id          String @id @default(cuid())
+  reference   String @unique
+  title       String
+  description String
+  category    String
+  priority    String @default("MEDIUM") // LOW | MEDIUM | HIGH | CRITICAL
+  status      String @default("OPEN") // OPEN | WIP | HOLD | CLOSED | REJECTED
+  level       String @default("L1") // L1 | L2 | L3
+
+  raisedById String
+  raisedBy   User    @relation("RaisedBy", fields: [raisedById], references: [id])
+  assigneeId String?
+  assignee   User?   @relation("AssignedTo", fields: [assigneeId], references: [id])
+
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+  dueAt           DateTime
+  levelChangedAt  DateTime  @default(now())
+  closedAt        DateTime?
+  resolvedInMin   Int?
+  escalatedAt     DateTime?
+  escalationCount Int       @default(0)
+  reopenedCount   Int       @default(0)
+  slaBreached     Boolean   @default(false)
+  rating          Int?
+  feedback        String?
+
+  attachments Attachment[]
+  remarks     Remark[]
+  history     StatusEvent[]
+
+  @@index([status])
+  @@index([level])
+  @@index([assigneeId])
+  @@index([raisedById])
+  @@index([priority])
+}
+
+model Attachment {
+  id           String    @id @default(cuid())
+  complaintId  String
+  complaint    Complaint @relation(fields: [complaintId], references: [id], onDelete: Cascade)
+  filename     String
+  mimeType     String
+  size         Int
+  data         Bytes
+  uploadedById String
+  uploadedBy   User      @relation(fields: [uploadedById], references: [id])
+  createdAt    DateTime  @default(now())
+
+  @@index([complaintId])
+}
+
+model Remark {
+  id          String    @id @default(cuid())
+  complaintId String
+  complaint   Complaint @relation(fields: [complaintId], references: [id], onDelete: Cascade)
+  authorId    String
+  author      User      @relation(fields: [authorId], references: [id])
+  body        String
+  internal    Boolean   @default(false)
+  createdAt   DateTime  @default(now())
+
+  @@index([complaintId])
+}
+
+model StatusEvent {
+  id          String    @id @default(cuid())
+  complaintId String
+  complaint   Complaint @relation(fields: [complaintId], references: [id], onDelete: Cascade)
+  actorId     String?
+  actor       User?     @relation(fields: [actorId], references: [id])
+  type        String // CREATED | STATUS | LEVEL | ASSIGN | REMARK | ESCALATION | FEEDBACK
+  fromValue   String?
+  toValue     String?
+  note        String?
+  automated   Boolean   @default(false)
+  createdAt   DateTime  @default(now())
+
+  @@index([complaintId])
+  @@index([createdAt])
+}
+
+model Notification {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  title     String
+  body      String
+  href      String?
+  read      Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  @@index([userId, read])
+}
+
+model Setting {
+  key       String   @id
+  value     String
+  updatedAt DateTime @updatedAt
+}
